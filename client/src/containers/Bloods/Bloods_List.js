@@ -179,11 +179,6 @@ class Bloods_List extends Component {
       this.setState({ data: res.data });
     }
   }
-  // componentDidMount(){
-  //   Axios.get("/bloods")
-  //     .then((res) => this.setState({data: res})
-  //     .catch((err) => console.log(err))
-  // };
 
   render() {
     console.log(this.state);
