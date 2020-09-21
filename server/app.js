@@ -15,7 +15,7 @@ const database = "mongodb://localhost/qonbanki";
 
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
-// const customersRouter = require("./routes/customers");
+const appPersonsRouter = require("./routes/appPersons");
 const bloodsRouter = require("./routes/bloods");
 const adminsRouter = require("./routes/admins");
 
@@ -51,6 +51,7 @@ app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/bloods", bloodsRouter);
 app.use("/admins", adminsRouter);
+app.use("/application-persons", appPersonsRouter);
 
 mongoose
   .connect(database, { useNewUrlParser: true, useFindAndModify: false })
