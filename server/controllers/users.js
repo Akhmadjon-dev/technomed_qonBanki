@@ -1,8 +1,5 @@
 const bcrypt = require("bcrypt");
 const Users = require("../models/users");
-const util = require("../utils");
-
-const baseUrl = process.env.REACT_APP_baseUrl || "";
 
 exports.fetchAllUsers = (req, res) => {
   Users.find()
@@ -27,14 +24,7 @@ exports.deleteAllUsers = (req, res) => {
 };
 
 exports.createUser = async (req, res) => {
-  const { webCam, name, createdAt, password, email, file } = req.body;
-  // let imgFile = null;
-
-  // if (webCam) {
-  //   imgFile = await util.webImgtoFile(webCam, 'Users', `${name}-${createdAt}`);
-  // }
-
-  // const img = file ? baseUrl + file.path.replace('public', '') : (imgFile || webCam);
+  const { password, email } = req.body;
   const hashedPassword = await bcrypt.hash(password, 8);
   const User = new Users({
     ...req.body,
@@ -44,7 +34,6 @@ exports.createUser = async (req, res) => {
   User.save()
     .then((User) => {
       res.json(User);
-      // util.resizeImg(file, 'Users');
     })
     .catch((err) => {
       const msg =
@@ -57,22 +46,12 @@ exports.createUser = async (req, res) => {
 
 exports.updateUserById = async (req, res) => {
   const { id } = req.params;
-  const { webCam, oldImg, updatedAt, name } = req.body;
-
-  // let imgFile = null;
-
-  // if (webCam) {
-  //   imgFile = await util.webImgtoFile(webCam, 'Users', `${name}-${updatedAt}`, true, oldImg);
-  // }
-
-  // const img = req.file ? baseUrl + req.file.path.replace('public', '') : (imgFile || webCam || oldImg);
 
   const updatedData = { ...req.body };
 
   Users.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
     .then((User) => {
       res.json(User);
-      util.resizeImg(req.file, "Users");
     })
     .catch((err) => res.send(err));
 };

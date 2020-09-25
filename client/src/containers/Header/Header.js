@@ -5,19 +5,13 @@ import { compose, bindActionCreators } from "redux";
 import { signOut } from "../../store/actions/auth/";
 import {
   AiOutlineHome,
-  AiOutlineShoppingCart,
-  AiOutlineShopping,
   AiOutlineUser,
-  AiOutlineTag,
   AiOutlinePoweroff,
-  AiOutlineLock,
-  AiOutlineLogin,
-  AiOutlineBoxPlot,
   AiTwotoneBoxPlot,
+  AiFillUpCircle,
+  AiTwotoneUpCircle,
 } from "react-icons/ai";
 import { Header, NavList, Brand, Button } from "../../styles";
-import { ReactComponent as LogoIcon } from "../../assets/logo/logo.svg";
-import { ReactComponent as LogoShort } from "../../assets/logo/logo-icon.svg";
 
 import language from "../../lang/header";
 import GlobalContext from "../../context/GlobalContext";
@@ -51,65 +45,41 @@ class HeaderComponent extends PureComponent {
       {
         url: "/bloods",
         exact: true,
-        title: "Bloods",
+        title: "Qonlar",
         icon: <AiTwotoneBoxPlot />,
       },
-      // {
-      //   url: '/sales', exact: true, title: 'Sales', icon: <AiOutlineShopping />,
-      // },
-      // {
-      //   url: '/customers', exact: true, title: 'Customers', icon: <AiOutlineUser />,
-      // },
-      // {
-      //   url: '/orders', exact: true, title: 'Orders', icon: <AiOutlineTag />,
-      // },
-      // {
-      //   url: '/sign-up', exact: true, title: 'Sign Up', icon: <AiOutlineLogin />,
-      // },
+      {
+        url: "/applications",
+        exact: true,
+        title: "Talabnomalar",
+        icon: <AiTwotoneUpCircle />,
+      },
+      {
+        url: "/users",
+        exact: true,
+        title: "Foydalanuvchilar",
+        icon: <AiOutlineUser />,
+      },
     ];
     return (
       <Header>
         <nav>
           <Brand>
-            <Link to="/" id="logo">
-              <LogoIcon id="logo-extend" />
-              <LogoShort id="logo-short" />
-            </Link>
+            <Link to="/" id="logo"></Link>
           </Brand>
           <ul style={{ padding: 0 }}>
-            {URLS.map((item) => {
-              console.log(item);
-
-              if (!isAdmin) {
-                if (!item.admin) {
-                  return (
-                    <NavList key={item.url}>
-                      <NavLink
-                        to={item.url}
-                        exact={item.exact}
-                        activeClassName="active"
-                      >
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </NavLink>
-                    </NavList>
-                  );
-                }
-                return null;
-              } else {
-                return (
-                  <NavList key={item.url}>
-                    <NavLink
-                      to={item.url}
-                      exact={item.exact}
-                      activeClassName="active"
-                    >
-                      <span>{item.title}</span>
-                    </NavLink>
-                  </NavList>
-                );
-              }
-            })}
+            {URLS.map((item) => (
+              <NavList key={item.url}>
+                <NavLink
+                  to={item.url}
+                  exact={item.exact}
+                  activeClassName="active"
+                >
+                  {item.icon}
+                  <span>{item.title}</span>
+                </NavLink>
+              </NavList>
+            ))}
 
             <NavList className="text-center">
               <Button

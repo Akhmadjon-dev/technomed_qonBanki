@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const controllers = require("../controllers/admins");
-const multer = require("../configs/multer");
 
 /* GET home page. */
 router.get("/", controllers.fetchAllAdmins);

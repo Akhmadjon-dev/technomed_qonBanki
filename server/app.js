@@ -9,13 +9,14 @@ const MongoStore = require("connect-mongo")(session);
 const compression = require("compression");
 const isLoggedIn = require("./utils/index").authHandler;
 
-const port = process.env.PORT || 8008;
+const port = process.env.PORT || 8888;
 
 const database = "mongodb://localhost/qonbanki";
 
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const appPersonsRouter = require("./routes/appPersons");
+const applicationsRouter = require("./routes/application");
 const bloodsRouter = require("./routes/bloods");
 const adminsRouter = require("./routes/admins");
 
@@ -51,7 +52,8 @@ app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/bloods", bloodsRouter);
 app.use("/admins", adminsRouter);
-app.use("/application-persons", appPersonsRouter);
+app.use("/applications", applicationsRouter);
+app.use("/app-persons", appPersonsRouter);
 
 mongoose
   .connect(database, { useNewUrlParser: true, useFindAndModify: false })
@@ -63,4 +65,5 @@ mongoose
 app.listen(port, () =>
   console.log(`App is running on server localhost:${port}`)
 );
+
 module.exports = app;

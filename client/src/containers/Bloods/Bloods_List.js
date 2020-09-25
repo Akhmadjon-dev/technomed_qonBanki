@@ -11,16 +11,6 @@ const columns = [
     key: "dateCome",
     width: 100,
     fixed: "left",
-    // filters: [
-    //   {
-    //     text: "Joe",
-    //     value: "Joe",
-    //   },
-    //   {
-    //     text: "John",
-    //     value: "John",
-    //   },
-    // ],
     onFilter: (value, record) => record.name.indexOf(value) === 0,
   },
   {

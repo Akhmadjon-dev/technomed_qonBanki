@@ -39,7 +39,6 @@ const bloodsSchema = new Schema({
     default: Date.now(),
     type: Number,
   },
-  // storeId: { type: Schema.Types.ObjectId, refPath: 'creator' },
 });
 
 // bloodsSchema.index({ name: 1 });

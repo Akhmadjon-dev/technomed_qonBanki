@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const Admins = require("../models/admins");
-const util = require("../utils");
 
 const baseUrl = process.env.REACT_APP_baseUrl || "";
 
@@ -28,26 +27,15 @@ exports.deleteAllAdmins = (req, res) => {
 
 exports.createAdmin = async (req, res) => {
   const { name, createdAt, password, email } = req.body;
-  // let imgFile = null;
-
-  // if (webCam) {
-  //   imgFile = await util.webImgtoFile(webCam, "Admins", `${name}-${createdAt}`);
-  // }
-
-  // const img = file
-  //   ? baseUrl + file.path.replace("public", "")
-  //   : imgFile || webCam;
   const hashedPassword = await bcrypt.hash(password, 8);
   const Admin = new Admins({
     ...req.body,
-    // img,
     password: hashedPassword,
   });
 
   Admin.save()
     .then((Admin) => {
       res.json(Admin);
-      // util.resizeImg(file, "Admins");
     })
     .catch((err) => {
       const msg =
@@ -60,30 +48,12 @@ exports.createAdmin = async (req, res) => {
 
 exports.updateAdminById = async (req, res) => {
   const { id } = req.params;
-  const { webCam, oldImg, updatedAt, name } = req.body;
-
-  // let imgFile = null;
-
-  // if (webCam) {
-  //   imgFile = await util.webImgtoFile(
-  //     webCam,
-  //     "Admins",
-  //     `${name}-${updatedAt}`,
-  //     true,
-  //     oldImg
-  //   );
-  // }
-
-  // const img = req.file
-  //   ? baseUrl + req.file.path.replace("public", "")
-  //   : imgFile || webCam || oldImg;
 
   const updatedData = { ...req.body };
 
   Admins.findByIdAndUpdate(id, { $set: updatedData }, { new: true })
     .then((Admin) => {
       res.json(Admin);
-      // util.resizeImg(req.file, "Admins");
     })
     .catch((err) => res.send(err));
 };

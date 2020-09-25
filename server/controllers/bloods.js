@@ -1,7 +1,4 @@
 const Bloods = require("../models/bloods");
-const util = require("../utils");
-
-const baseUrl = process.env.REACT_APP_baseUrl || "";
 
 exports.fetchAllBloods = (req, res) => {
   Bloods.find()

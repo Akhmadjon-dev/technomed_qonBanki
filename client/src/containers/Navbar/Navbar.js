@@ -9,13 +9,12 @@ const Navbar = (props) => {
 
   return (
     <Nav>
-      <SearchInput type="search" width="50%" placeholder="Search blood" />
-      <select name="lang" className="ml-auto">
-        <option value="uz">UZ</option>
-        <option value="ru">RU</option>
-        <option value="en">EN</option>
-      </select>
-      <Link to="/students/new" className="links" display="inline-block">
+      <Link
+        to="/"
+        className="links"
+        display="inline-block"
+        style={{ marginLeft: "auto" }}
+      >
         <AiOutlineBell size="20" />
       </Link>
       <Link to="/profile" className="profile-img" display="inline-block">

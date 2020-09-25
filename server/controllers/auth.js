@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const Users = require("../models/users");
-// const Customers = require("../models/customers");
 const Admins = require("../models/admins");
 
 exports.signIn = async (req, res) => {

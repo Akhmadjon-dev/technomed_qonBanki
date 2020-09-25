@@ -16,9 +16,6 @@ class BloodsAdd extends Component {
     formData.append("password", password);
     formData.append("email", email);
     formData.append("img", this.fileRef.files[0]);
-    // Object.values(this.fileRef.files).map(item => {
-    //   return formData.append('img', item);
-    // })
 
     Axios.post("/admins/5e27ec35f776429022a1aed8/edit", formData)
       .then((res) => console.log(res.data))

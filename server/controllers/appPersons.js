@@ -1,8 +1,4 @@
-const bcrypt = require("bcrypt");
 const AppPersons = require("../models/appPersons");
-const util = require("../utils");
-
-const baseUrl = process.env.REACT_APP_baseUrl || "";
 
 exports.fetchAllAppPersons = (req, res) => {
   AppPersons.find()
@@ -34,7 +30,6 @@ exports.createAppPerson = async (req, res) => {
   AppPerson.save()
     .then((AppPerson) => {
       res.json(AppPerson);
-      util.resizeImg(file, "AppPersons");
     })
     .catch((err) => {
       res.json({ success: false });
