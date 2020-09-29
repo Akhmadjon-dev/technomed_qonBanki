@@ -5,6 +5,9 @@
     "scripts": {
         "start": "nodemon app.js"
     },
+    "engines": {
+        "node": "12.15.0"
+    },
     "dependencies": {
         "bcrypt": "^5.0.0",
         "compression": "^1.7.4",
