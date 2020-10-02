@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Axios from "../../utils/axios";
-
 import { Table } from "antd";
+import ReactExport from "react-data-export";
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 class Users extends Component {
   constructor(props) {
@@ -43,11 +46,18 @@ class Users extends Component {
         ),
       },
     ];
-
     return (
       <div>
         <h2>Foydalanuvchilar ro'yxati</h2>
         <Table columns={columns} dataSource={data} />
+        <ExcelFile element={<button>Download Users</button>}>
+          <ExcelSheet data={data} name="users">
+            <ExcelColumn label="Name" value="name" />
+            <ExcelColumn label="Address" value="address" />
+            <ExcelColumn label="email" value="email" />
+            <ExcelColumn label="Phone" value="phone" />
+          </ExcelSheet>
+        </ExcelFile>
       </div>
     );
   }

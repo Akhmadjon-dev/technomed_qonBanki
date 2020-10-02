@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import Axios from "../../utils/axios";
-
 import { Table } from "antd";
+import ReactExport from "react-data-export";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 class Applications extends Component {
   constructor(props) {
@@ -44,11 +48,45 @@ class Applications extends Component {
         ),
       },
     ];
-
+    // appPersons: (2) [{…}, {…}]
+    // createdAt: 1600934294538
+    // id: "N012"
+    // leaderSection: "Toshpo'latov"
+    // status: "pending"
+    // updatedAt: 1600934294538
+    // vrach: "Sodiqo
     return (
       <div>
         <h2>Talabnomalar ro'yxati</h2>
         <Table columns={columns} dataSource={data} />
+        <ExcelFile element={<button>Download Applications</button>}>
+          <ExcelSheet data={data} name="Applications">
+            <ExcelColumn label="id" value="id" />
+            <ExcelColumn label="Vrach" value="vrach" />
+            <ExcelColumn label="leaderSection" value="leaderSection" />
+            <ExcelColumn label="UpdatedAt" value="updatedAt" />
+            <ExcelColumn
+              label="appPersons"
+              value={(col) =>
+                col.appPersons &&
+                col.appPersons.map((item) => (
+                  <>
+                    <ExcelColumn
+                      label="Application person"
+                      value={item.name}
+                      key={item.name}
+                    />
+                    {/* <ExcelColumn
+                      label="Application person"
+                      value={item.diagnos}
+                      key={item.diagnos}
+                    /> */}
+                  </>
+                ))
+              }
+            />
+          </ExcelSheet>
+        </ExcelFile>
       </div>
     );
   }
