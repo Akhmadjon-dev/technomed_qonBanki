@@ -5,6 +5,7 @@ import SignIn from "../containers/Auth/SignIn";
 import Bloods from "../containers/Bloods/Bloods_List";
 import Users from "../containers/Users/Users";
 import Applications from "../containers/Applications/Applications";
+import Applications_Add from "../containers/Applications/Applications_Add";
 
 export default {
   authenticated: [
@@ -21,6 +22,12 @@ export default {
       path="/applications"
       exact
       component={Applications}
+    />,
+    <Route
+      key="applicationsAdd"
+      path="/applications/new"
+      exact
+      component={Applications_Add}
     />,
   ],
   notAuthenticated: [

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Axios from "../../utils/axios";
 import { Table } from "antd";
+import { StyledApp } from "../../styles/pages/app";
+import { AiFillFileText, AiOutlineUserAdd } from "react-icons/ai";
 import ReactExport from "react-data-export";
-
+import { Button } from "../../styles/buttons";
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
@@ -48,16 +50,21 @@ class Applications extends Component {
         ),
       },
     ];
-    // appPersons: (2) [{…}, {…}]
-    // createdAt: 1600934294538
-    // id: "N012"
-    // leaderSection: "Toshpo'latov"
-    // status: "pending"
-    // updatedAt: 1600934294538
-    // vrach: "Sodiqo
     return (
-      <div>
-        <h2>Talabnomalar ro'yxati</h2>
+      <StyledApp>
+        <div className="top-app">
+          <h2>Talabnomalar ro'yxati</h2>
+          <Button
+            width="170px"
+            status="warning"
+            className="add-app"
+            onClick={() => this.props.history.push("/applications/new")}
+          >
+            <AiOutlineUserAdd />
+            <span style={{ marginLeft: "8px" }}>Application</span>
+          </Button>
+        </div>
+
         <Table columns={columns} dataSource={data} />
         <ExcelFile element={<button>Download Applications</button>}>
           <ExcelSheet data={data} name="Applications">
@@ -87,7 +94,7 @@ class Applications extends Component {
             />
           </ExcelSheet>
         </ExcelFile>
-      </div>
+      </StyledApp>
     );
   }
 }

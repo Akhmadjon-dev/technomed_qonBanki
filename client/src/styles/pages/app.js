@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const StyledDrivers = styled.section`
+export const StyledApp = styled.section`
   background-color: var(--bg-light);
-  .top-driver {
+  .top-app {
     margin-left: 20px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +16,7 @@ export const StyledDrivers = styled.section`
       font-size: 20px;
       line-height: 20px;
     }
-    .add-driver {
+    .add-app {
       background: linear-gradient(259.86deg, #ff8e34 -42.11%, #ff5c4a 85.54%);
       display: flex;
       align-items: center;
@@ -146,6 +146,58 @@ export const StyledDrivers = styled.section`
       @media (max-width: 650px) {
         & {
           width: calc((100%));
+        }
+      }
+    }
+  }
+`;
+
+export const StyledAppAdd = styled.section`
+  .top-app {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #dbe5ea;
+    h2 {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+  form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .persons__form {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      div {
+        .input-container {
+          width: 400px;
+        }
+      }
+    }
+    .form__box {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      .input-container {
+        width: 300px;
+        select {
+          width: 100%;
+          height: 34px;
+          padding-left: 40px;
+          border: none;
+          color: #000;
         }
       }
     }
