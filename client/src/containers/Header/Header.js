@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Link, withRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose, bindActionCreators } from "redux";
-import { signOut } from "../../store/actions/auth/";
+import { signOutAction } from "../../store/Auth/actions";
 import {
   AiOutlineHome,
   AiOutlineUser,
@@ -26,7 +26,7 @@ class HeaderComponent extends PureComponent {
   static contextType = GlobalContext;
 
   signOutHandler = async () => {
-    await this.props.signOut();
+    await this.props.signOutAction();
     this.props.history.push("/sign-in");
   };
 
@@ -106,7 +106,7 @@ class HeaderComponent extends PureComponent {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ signOut }, dispatch);
+  return bindActionCreators({ signOutAction }, dispatch);
 };
 
 export default compose(

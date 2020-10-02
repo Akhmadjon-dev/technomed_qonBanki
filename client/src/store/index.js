@@ -4,7 +4,7 @@ import logger from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import authReducer from './reducers/auth';
+import authReducer from './Auth/reducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,

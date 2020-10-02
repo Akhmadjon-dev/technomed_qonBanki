@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export { Header, NavList, Brand, Nav, Input as SearchInput } from './header';
-export { Button } from './buttons';
+export * from "./header";
+export * from "./buttons";
+export * from "./inputs";
 
 export const Main = styled.main`
   display: flex;
@@ -15,19 +16,20 @@ export const Section = styled.section`
   height: 100%;
   min-height: 100vh;
   padding: 15px;
-  padding-left: 195px;
-  padding-top: 75px;
+  padding-left: 201px;
+  padding-top: 85px;
   background: var(--bg-light);
+  color: var(--dark-purpule);
   @media (max-width: 1024px) {
     & {
-    padding-left: 85px;
+      padding-left: 65px;
     }
   }
 `;
 
 export const FlexWrapper = styled.div`
   display: flex;
-  align-items: ${props => props.align || 'center'};
-  justify-content: ${props => props.justify || 'center'};
-  flex-direction: ${props => props.fd || 'row'};
+  align-items: ${(props) => props.align || "center"};
+  justify-content: ${(props) => props.justify || "center"};
+  flex-direction: ${(props) => props.fd || "row"};
 `;

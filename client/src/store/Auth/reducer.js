@@ -1,39 +1,38 @@
-import * as types from '../../actionTypes';
+import * as types from "./actionTypes";
 
 const initialState = {
   error: false,
   isLogged: false,
-  msg: '',
+  msg: "",
   pending: false,
   success: false,
   user: null,
-  userType: null
+  userType: "user",
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.SIGN_IN_ERROR:
     case types.SIGN_UP_ERROR: {
+      console.log(action);
       return {
         error: true,
         isLogged: false,
         msg: action.payload,
         pending: false,
-        success: false
-      }
+        success: false,
+      };
     }
     case types.SIGN_IN_SUCCESS:
     case types.SIGN_UP_SUCCESS: {
-      console.log('Successss');
       return {
         pending: false,
         error: false,
-        msg: action.payload.msg,
+        msg: null,
         isLogged: true,
-        success: action.payload.success,
-        user: { ...action.payload.payload },
-        userType: action.payload.type,
-      }
+        success: true,
+        user: { ...action.payload },
+      };
     }
     case types.SIGN_IN_PENDING:
     case types.SIGN_UP_PENDING: {
@@ -44,11 +43,11 @@ export default (state = initialState, action) => {
         pending: true,
         success: false,
         user: null,
-        userType: null
-      }
+        userType: null,
+      };
     }
     default: {
       return initialState;
     }
   }
-}
+};

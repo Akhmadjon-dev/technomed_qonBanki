@@ -1,14 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import cornerTop from "../assets/header/corner-top.svg";
+import cornerBottom from "../assets/header/corner-bottom.svg";
 
-export const Header = styled.header`
-  width: 180px;
+const Header = styled.header`
+  width: 200px;
   height: 100%;
   min-height: 100vh;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  background: var(--main-dark);
+  background: var(--redish);
   color: var(--white);
   box-shadow: var(--box-shadow);
   z-index: 1050;
@@ -30,10 +32,16 @@ export const Header = styled.header`
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, transparent 60px,#00be4c 61px, #00be4c 90px, transparent 10px );
+    background: linear-gradient(
+      to bottom,
+      transparent 60px,
+      #00be4c 61px,
+      #00be4c 90px,
+      transparent 10px
+    );
     border-radius: 10px;
   }
-  
+
   ul {
     padding: 0px;
     display: flex;
@@ -44,6 +52,7 @@ export const Header = styled.header`
     & {
       width: 70px;
       box-shadow: none;
+      overflow-x: hidden;
     }
     #brand span {
       display: none;
@@ -51,11 +60,11 @@ export const Header = styled.header`
   }
 `;
 
-export const Brand = styled.div`
+const Brand = styled.div`
   position: sticky;
   top: 0;
   height: 60px;
-  background: var(--main-dark);
+  background: var(--redish);
   text-align: center;
   line-height: 60px;
   text-decoration: none;
@@ -72,7 +81,7 @@ export const Brand = styled.div`
     display: none;
   }
   @media (max-width: 1024px) {
-    &{
+    & {
       background: var(--white);
     }
     #logo-extend {
@@ -87,20 +96,63 @@ export const Brand = styled.div`
   }
 `;
 
-export const NavList = styled.li`
+const NavList = styled.li`
   margin: 3px 0;
+  margin-left: 25px;
   list-style: none;
   a {
+    position: relative;
     display: block;
-    padding: 10px 20px;
+    padding: 8px 20px;
     color: var(--white);
     text-decoration: none;
-    transition: .3s;
+    transition: 0.3s;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 
     &.active,
     &:hover {
-      background-color: var(--orange-dark);
-      transition: .5s;
+      background-color: #fff;
+      transition: 0.5s;
+      color: var(--dark);
+
+      svg {
+        fill: var(--dark);
+      }
+    }
+    &.active:before {
+      content: "";
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: -10px;
+      transform: rotate(24deg);
+      right: -5px;
+      background-size: cover;
+      z-index: 0;
+      background: url(${cornerTop}) no-repeat center right;
+    }
+    &.active:after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      bottom: -10px;
+      transform: rotate(-21deg);
+      right: -5px;
+      background-size: cover;
+      z-index: 0;
+      background: url(${cornerBottom}) no-repeat center right;
+    }
+  }
+  .exit-btn {
+    margin-right: 25px;
+    width: auto;
+    border: 1px solid #fff;
+
+    &:hover {
+      background: #fff;
+      color: #000;
     }
   }
   svg {
@@ -109,7 +161,7 @@ export const NavList = styled.li`
     height: 24px;
   }
   &:last-of-type {
-    margin-top:auto;
+    margin-top: auto;
   }
   &:last-of-type a {
     color: var(--danger);
@@ -117,13 +169,27 @@ export const NavList = styled.li`
   @media (max-width: 1024px) {
     & {
       padding-left: 0;
+      margin: 3px 10px;
       text-align: center;
       span {
         display: none;
       }
+      a {
+        padding: 10px;
+        font-size: 20px;
+      }
+      a.active,
+      a:hover {
+        border-radius: 10px;
+        padding: 10px;
+      }
+      svg {
+        margin-right: 0;
+      }
     }
-    a {
-      font-size: 20px;
+    & a.active:after,
+    & a.active:before {
+      display: none;
     }
     &:last-of-type svg {
       margin-right: 0;
@@ -131,7 +197,7 @@ export const NavList = styled.li`
   }
 `;
 
-export const Nav = styled.nav`
+const Nav = styled.nav`
   position: fixed;
   display: flex;
   align-items: center;
@@ -158,7 +224,7 @@ export const Nav = styled.nav`
   .links svg {
     stroke: var(--success);
   }
-  
+
   .profile-img {
     display: flex;
     margin-left: 5px;
@@ -185,7 +251,7 @@ export const Nav = styled.nav`
     font-size: 14px;
     color: var(--main);
   }
-  
+
   small {
     line-height: 1;
   }
@@ -196,8 +262,8 @@ export const Nav = styled.nav`
   }
 `;
 
-export const Input = styled.input`
-  width: ${(props) => props.width || '100%'};
+const Input = styled.input`
+  width: ${(props) => props.width || "100%"};
   height: 35px;
   display: inline-block;
   padding: 7px 10px 7px 20px;
@@ -207,8 +273,9 @@ export const Input = styled.input`
   background-color: var(--bg-light);
   outline: none;
   &:focus {
-    border: 1px solid var(--main-dark);
-  }  
+    border: 1px solid var(--redish);
+    background-color: var(--white);
+  }
 
   @media (max-width: 550px) {
     & {
@@ -216,3 +283,5 @@ export const Input = styled.input`
     }
   }
 `;
+
+export { Header, Brand, NavList, Nav, Input };

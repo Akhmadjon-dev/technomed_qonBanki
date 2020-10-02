@@ -16,9 +16,9 @@ exports.authHandler = (req, res, next) => {
   const whiteList = [
     "/auth/sign-in",
     "/auth/sign-up",
-    "/dashboard",
-    "/users",
-    "/bloods",
+    // "/dashboard",
+    // "/users",
+    // "/bloods",
   ];
   console.log(req.session, req.url);
 

@@ -1,13 +1,15 @@
 :root {
     --main: #0c2461;
-    --main-dark: #130f40;
-    --bg-light: #f4f4fc;
+    --dark: #26284F;
+    --bg-light: #F8F7FB;
     --white: #fff;
     --grey: #eee;
-    --orange: #ff9800;
-    --orange-dark: #f96435;
+    --orange: #FF8E34;
+    --redish: #FF5C4A;
     --danger: #f91b62;
     --success: #6ab04c;
+    --purpule: #5358E2;
+    --dark-purpule: #26284F;
     --box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
     font-family: 'Roboto', sans-serif;
 }
@@ -30,7 +32,7 @@ h5,
 h6,
 strong,
 b {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .text-center {
